@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+</head>
+<body>
+    <h1>Live Calendar</h1>
+    <div>
+        <p>エリアを選ぶ：大阪</p>
+    </div>
+    <div>
+        <label for="datepicker">日程を選ぶ：</label>
+        <input type="text" id="datepicker">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function() {
+              $("#datepicker").datepicker({
+                dateFormat: 'yy/mm/dd', // 日付の形式を設定
+                onSelect: function(dateText) {
+                  alert("Selected Date: " + dateText); // 日付が選択された時の処理
+                }
+              });
+            });
+        </script>
+    </div>
+    <div>
+        <h3>今日のスケジュール</h3>
+    </div>
+</body>
+</html>
