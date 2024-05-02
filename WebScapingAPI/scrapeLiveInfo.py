@@ -23,12 +23,18 @@ class ZeepNamba:
         return json_data
 
 
-    def getLiveInfoJson(self):
-        target_date = "2024/05/3"
+    def getLiveInfoJson(self, target_date=""):
+        if target_date is None or target_date == "":
+            from datetime import date
+            today = date.today()
+            target_date = today.strftime("%Y/%m/%d")
+
         performer, title = self.fetchSchedule(target_date)
+        if performer is None or title is None:
+            return {}
+        
         print("CONTENT : " + performer+"「" + title + "」")
         print("===== ===== ===== =====")
-
         json_data = self.convertJson(target_date, performer, title, self.area, self.site)
         return json_data
 
@@ -70,4 +76,4 @@ class ZeepNamba:
 
         print("FIND RESULT : NOT FOUND")
         print("===== ===== =====")
-        return None
+        return None, None
