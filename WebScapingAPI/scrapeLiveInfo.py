@@ -23,7 +23,7 @@ class ZeepNamba:
         return json_data
 
 
-    def getLiveInfoJson(self, target_date=""):
+    def getLiveInfoJson(self, target_date):
         if target_date is None or target_date == "":
             from datetime import date
             today = date.today()
