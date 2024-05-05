@@ -7,6 +7,18 @@
 - Zepp Namba のスケジュールをスクレイピングするスクリプトを作成
 - そのスクリプトの取得結果を Json でリターンする API を作成
 
+# 操作方法
+
+## Python
+
+- まずは仮想環境に入るために以下のコマンドを実行
+  - `source python_12_venv/bin/activate`
+- 初回起動時であればパッケージをインストール
+  - `cd WebScrapingAPI`
+  - `pip install -r requirements.txt`
+- 以下コマンドで API 用の Flask サーバーを起動
+  - `python liveCalendar`
+
 # 学び
 
 ## Docker
