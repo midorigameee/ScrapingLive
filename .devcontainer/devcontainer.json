@@ -2,7 +2,7 @@
   "name": "React-FlaskAPI",
   "dockerFile": "Dockerfile",
   //"service": "React-Python",
-  "forwardPorts": [5000],
+  "forwardPorts": [5000, 3000],
   "mounts": [
     {
       "type": "volume",
