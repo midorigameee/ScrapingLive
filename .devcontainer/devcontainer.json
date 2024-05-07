@@ -8,6 +8,16 @@
       "type": "volume",
       "source": "python12_venv",
       "target": "${containerWorkspaceFolder}/python12_venv"
+    },
+    {
+      "type": "volume",
+      "source": "node_modules_nextjs",
+      "target": "${containerWorkspaceFolder}/nextjs-ts-app/node_modules"
+    },
+    {
+      "type": "volume",
+      "source": "node_modules_react",
+      "target": "${containerWorkspaceFolder}/simple-react-app/node_modules"
     }
   ],
   "customizations": {
@@ -33,5 +43,6 @@
       }
     }
   },
-  "postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh"
+  "postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
+  "postStartCommand": "/bin/sh .devcontainer/postStartCommand.sh"
 }
