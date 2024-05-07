@@ -14,7 +14,7 @@ def index():
 def getZeppNamba():
     try:
         req = request.args
-        yaer = req.get("yaer")
+        yaer = req.get("year")
         month = req.get("month")
         day = req.get("day")
         if yaer == "" or month == "" or day == "":
