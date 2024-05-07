@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { getLiveSchedule } from "./utils/getLiveSchedule";
 import { SelectOptions } from "./components/SelectOptions";
+import { Title } from "./components/Title";
 
 function App() {
   let [info, setInfo] = useState({});
   let [visible, setVisible] = useState(false);
   let [count, setCount] = useState(0);
-  let [result, setResult] = useState(false);
+  let [resResult, setResResult] = useState(false);
   let [loading, setLoading] = useState(true);
 
   const apiUrl = "http://localhost:5000/api/osaka/zepp-namba";
 
   useEffect(() => {
-    info.result ? setResult(true) : setResult(false);
+    info.result ? setResResult(true) : setResResult(false);
   }, [info]);
 
   /*
@@ -41,9 +42,11 @@ function App() {
   }, [count]);
 
   const viewJson = () => {
-    return loading ? (
-      "読み込み中..."
-    ) : result ? (
+    return loading ? "読み込み中..." : showResult();
+  };
+
+  const showResult = () => {
+    return resResult ? (
       <div>
         <div>地域：{info.area}</div>
         <div>会場：{info.site}</div>
@@ -60,7 +63,7 @@ function App() {
 
   return (
     <>
-      <h1>Live schedule</h1>
+      <Title />
       <SelectOptions startDate={startDate} endDate={endDate} />
       <button onClick={() => setCount((prev) => prev + 1)}>Get schedule</button>
       <div>{visible ? viewJson() : "ここにスケジュールが表示されます"}</div>
