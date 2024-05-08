@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "tanuki";
+  src: url("../font/TanukiMagic.ttf") format("truetype");
+}
+
+.TitleStyle {
+  margin: 20px auto;
+  text-align: center;
+
+  font-family: "tanuki";
+  /*border-bottom: 5px solid rgb(255, 108, 108);*/
+}
+
+.TitleLine {
+  transition: 0.5s;
+  background: linear-gradient(transparent 70%, rgb(255, 108, 108) 100%);
+}
