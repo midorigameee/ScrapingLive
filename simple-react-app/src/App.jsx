@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getLiveSchedule } from "./utils/getLiveSchedule";
 import { SelectOptions } from "./components/SelectOptions";
 import { Title } from "./components/Title";
+import styles from "./cssModule/App.module.css";
 
 function App() {
   let [info, setInfo] = useState({});
@@ -54,7 +55,7 @@ function App() {
         <div>イベント名：{info.title}</div>
       </div>
     ) : (
-      "スケジュールがありません"
+      "データがありません"
     );
   };
 
@@ -62,12 +63,17 @@ function App() {
   const endDate = new Date(2024, 5, 31);
 
   return (
-    <>
+    <div className={styles.AppStyle}>
       <Title />
       <SelectOptions startDate={startDate} endDate={endDate} />
-      <button onClick={() => setCount((prev) => prev + 1)}>Get schedule</button>
+      <button
+        className={styles.ButtonStyle}
+        onClick={() => setCount((prev) => prev + 1)}
+      >
+        スケジュール確認
+      </button>
       <div>{visible ? viewJson() : "ここにスケジュールが表示されます"}</div>
-    </>
+    </div>
   );
 }
 
