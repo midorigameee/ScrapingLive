@@ -13,7 +13,7 @@ RUN apt-get install -y python3.12-venv
 RUN apt-get install -y nodejs npm
 
 # bashの日本語対応
-RUN export LC_ALL=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
 
 # Gitの設定
 RUN git config --global core.pager "LESSCHARSET=utf-8 less"
