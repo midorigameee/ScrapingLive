@@ -1,6 +1,6 @@
 {
   "name": "React-FlaskAPI",
-  "dockerFile": "Dockerfile",
+  "dockerFile": "../Dockerfile",
   //"service": "React-Python",
   "forwardPorts": [5000, 3000],
   "mounts": [
@@ -8,11 +8,6 @@
       "type": "volume",
       "source": "python12_venv",
       "target": "${containerWorkspaceFolder}/python12_venv"
-    },
-    {
-      "type": "volume",
-      "source": "node_modules_nextjs",
-      "target": "${containerWorkspaceFolder}/nextjs-ts-app/node_modules"
     },
     {
       "type": "volume",
