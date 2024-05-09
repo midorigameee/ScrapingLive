@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  react-flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001" # React
+      - "5001:5001" # Flask
+    volumes:
+      - .:/app
+      - simple-react-modules:/app/simple-react-app/node_modules
+    working_dir: /app
+    command: ["/bin/sh", "-c", ". ./execFlask.sh &. ./execReact.sh"]
+
+volumes:
+  simple-react-modules:

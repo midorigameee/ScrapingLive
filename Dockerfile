@@ -12,6 +12,8 @@ RUN apt-get install -y python3 python3-pip
 RUN apt-get install -y python3.12-venv
 RUN apt-get install -y nodejs npm
 
+RUN python3 -m venv python12_venv
+
 # bashの日本語対応
 ENV LC_ALL=ja_JP.UTF-8
 

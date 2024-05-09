@@ -1,6 +1,8 @@
 from flask import Flask, render_template, Response, request
 from flask_cors import CORS
 from scrapeLiveInfo import ZeepNamba
+import sys
+
 
 app = Flask(__name__)
 CORS(app)
@@ -31,4 +33,10 @@ def getZeppNamba():
         return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    portNo = 5000
+
+    args = sys.argv
+    if len(args) >0:
+        portNo = int(args[1])
+
+    app.run(host='0.0.0.0',debug=True, port=portNo)
