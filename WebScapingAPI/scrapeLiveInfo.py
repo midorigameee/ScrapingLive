@@ -8,10 +8,11 @@ class ZeepNamba:
         self.url = "https://www.zepp.co.jp/hall/namba/schedule/"
         self.area = "大阪"
         self.site = "Zeep Namba"
+        self.result = False
 
-
-    def convertJson(self, target_date, performer, title, area, site):
+    def convertJson(self, result, target_date, performer, title, area, site):
         data = {
+            "result": result,
             "date": target_date,
             "performer": performer,
             "title": title,
@@ -30,12 +31,8 @@ class ZeepNamba:
             target_date = today.strftime("%Y/%m/%d")
 
         performer, title = self.fetchSchedule(target_date)
-        if performer is None or title is None:
-            return {}
         
-        print("CONTENT : " + performer+"「" + title + "」")
-        print("===== ===== ===== =====")
-        json_data = self.convertJson(target_date, performer, title, self.area, self.site)
+        json_data = self.convertJson(self.result, target_date, performer, title, self.area, self.site)
         return json_data
 
 
@@ -72,8 +69,12 @@ class ZeepNamba:
                 title = content.find("h3", class_="sch-content-text__ttl").string
 
                 print("FIND RESULT : FOUND")
+                print("CONTENT : " + performer+"「" + title + "」")
+                print("===== ===== ===== =====")
+
+                self.result = True
                 return performer, title
 
         print("FIND RESULT : NOT FOUND")
         print("===== ===== =====")
-        return None, None
+        return "", ""

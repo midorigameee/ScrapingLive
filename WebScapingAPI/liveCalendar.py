@@ -1,7 +1,9 @@
 from flask import Flask, render_template, Response, request
+from flask_cors import CORS
 from scrapeLiveInfo import ZeepNamba
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -12,7 +14,7 @@ def index():
 def getZeppNamba():
     try:
         req = request.args
-        yaer = req.get("yaer")
+        yaer = req.get("year")
         month = req.get("month")
         day = req.get("day")
         if yaer == "" or month == "" or day == "":

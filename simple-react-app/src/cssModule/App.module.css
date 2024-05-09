@@ -1,0 +1,10 @@
+.AppStyle {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Conditions {
+  justify-content: space-between;
+}
