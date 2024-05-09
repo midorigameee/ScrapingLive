@@ -13,11 +13,13 @@ function App() {
   return (
     <div className={styles.AppStyle}>
       <Title />
-      <AreaSelector />
-      <DateSelector
-        targetDate={targetDate}
-        setTargetDate={(date) => setTargetDate(date)}
-      />
+      <div className={styles.Conditions}>
+        <AreaSelector />
+        <DateSelector
+          targetDate={targetDate}
+          setTargetDate={(date) => setTargetDate(date)}
+        />
+      </div>
       <CheckButton count={count} setCount={(num) => setCount(num)} />
       <ResultViewer count={count} targetDate={targetDate} />
     </div>
