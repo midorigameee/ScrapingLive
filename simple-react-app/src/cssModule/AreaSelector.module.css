@@ -1,0 +1,21 @@
+.SelectOptionsContainer {
+  background-color: beige;
+
+  padding: 20px 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.SelectOptionsBox {
+  margin: 0px 20px;
+}
+
+label {
+  margin: 0 10px;
+}
+
+select {
+  border-radius: 3px;
+  padding: 3px 3px;
+}

@@ -4,8 +4,6 @@ export function SelectOptions(props) {
   const { startDate, endDate } = props;
 
   const createDateList = () => {
-    // const startDate = new Date(2024, 5, 1);
-    // const endDate = new Date(2024, 5, 31);
     let dateList = [];
 
     for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {

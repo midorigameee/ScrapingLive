@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getLiveSchedule } from "./utils/getLiveSchedule";
 import { SelectOptions } from "./components/SelectOptions";
 import { Title } from "./components/Title";
+import { Condition } from "./components/Conditons";
 import styles from "./cssModule/App.module.css";
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
   return (
     <div className={styles.AppStyle}>
       <Title />
-      <SelectOptions startDate={startDate} endDate={endDate} />
+      <Condition />
       <button
         className={styles.ButtonStyle}
         onClick={() => setCount((prev) => prev + 1)}
