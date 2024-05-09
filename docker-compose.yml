@@ -5,14 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3001:3000" # React
+      - "3001:3001" # React
       - "5001:5001" # Flask
     volumes:
       - .:/app
+      - simple-react-modules:/app/simple-react-app/node_modules
     working_dir: /app
-    command:
-      [
-        "/bin/sh",
-        "-c",
-        "python3 -m venv python12_venv;. ./python12_venv/bin/activate;cd WebScapingAPI;pip install -r requirements.txt;python liveCalendar.py 5001",
-      ]
+    command: ["/bin/sh", "-c", ". ./execFlask.sh &. ./execReact.sh"]
+
+volumes:
+  simple-react-modules:
