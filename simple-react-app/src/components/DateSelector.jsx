@@ -3,16 +3,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../cssModule/DateSelector.module.css";
 
-export function DateSelector(props) {
-  const [startDate, setStartDate] = useState(new Date());
-
+export function DateSelector({ targetDate, setTargetDate }) {
   return (
     <>
       <label for="selectedDate">いつ？</label>
       <DatePicker
         id="selectedDate"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={targetDate}
+        onChange={(date) => setTargetDate(date)}
       />
     </>
   );
