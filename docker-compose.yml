@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  react-flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000" # React
+      - "5001:5001" # Flask
+    volumes:
+      - .:/app
+    working_dir: /app
+    command:
+      [
+        "/bin/sh",
+        "-c",
+        "python3 -m venv python12_venv;. ./python12_venv/bin/activate;cd WebScapingAPI;pip install -r requirements.txt;python liveCalendar.py 5001",
+      ]
