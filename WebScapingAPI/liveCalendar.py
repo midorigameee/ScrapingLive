@@ -36,7 +36,7 @@ if __name__ == '__main__':
     portNo = 5000
 
     args = sys.argv
-    if len(args) >0:
+    if len(args) > 1:
         portNo = int(args[1])
 
     app.run(host='0.0.0.0',debug=True, port=portNo)
