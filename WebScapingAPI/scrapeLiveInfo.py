@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import ast
 
-class ZeepNamba:
+class ZeppNamba:
     def __init__(self):
         self.url = "https://www.zepp.co.jp/hall/namba/schedule/"
         self.area = "大阪"
@@ -46,35 +46,45 @@ class ZeepNamba:
         print("===== fetchSchedule =====")
         # 日付の01を1に変換するために一度intに変換する
         t_year, t_month, t_day = map(int, target_date.split("/"))
-
         url = self.createURL(t_year, t_month)
-        res = requests.get(url)
-        print("URL : " + url)
-        print("CONNECTION : " + str(res.status_code))
 
-        soup = BeautifulSoup(res.text, "html.parser")
-        elems = soup.find_all("a", class_="sch-content")
+        try:
+            res = requests.get(url)
+            print("URL : " + url)
+            print("CONNECTION : " + str(res.status_code))
 
-        for content in elems:
-            month_and_date = content.find("p", class_="sch-content-date__month")
+            if res.status_code != 200:
+                return "Status code is not 200", str(res.status_code)
 
-            if month_and_date is None:
-                continue
+            soup = BeautifulSoup(res.text, "html.parser")
+            elems = soup.find_all("a", class_="sch-content")
 
-            month = month_and_date.string.split(".")[0]    # タグの間のテキストコンテンツを取得するためには.stringが必要
-            date = month_and_date.string.split(".")[1]
+            for content in elems:
+                month_and_date = content.find("p", class_="sch-content-date__month")
 
-            if month == str(t_month) and date == str(t_day):
-                performer = content.find("h2", class_="sch-content-text__performer").string
-                title = content.find("h3", class_="sch-content-text__ttl").string
+                if month_and_date is None:
+                    continue
 
-                print("FIND RESULT : FOUND")
-                print("CONTENT : " + performer+"「" + title + "」")
-                print("===== ===== ===== =====")
+                month = month_and_date.string.split(".")[0]    # タグの間のテキストコンテンツを取得するためには.stringが必要
+                date = month_and_date.string.split(".")[1]
 
-                self.result = True
-                return performer, title
+                if month == str(t_month) and date == str(t_day):
+                    performer = content.find("h2", class_="sch-content-text__performer").string
+                    title = content.find("h3", class_="sch-content-text__ttl").string
 
-        print("FIND RESULT : NOT FOUND")
-        print("===== ===== =====")
-        return "", ""
+                    print("FIND RESULT : FOUND")
+                    print("CONTENT : " + performer+"「" + title + "」")
+                    print("===== ===== ===== =====")
+
+                    self.result = True
+                    return performer, title
+
+                print("FIND RESULT : NOT FOUND")
+                print("===== ===== =====")
+                return "", ""
+                
+        except Exception as e:
+            print("エラー : ",e)
+            print("FIND RESULT : NOT FOUND")
+            print("===== ===== =====")
+            return e, ""

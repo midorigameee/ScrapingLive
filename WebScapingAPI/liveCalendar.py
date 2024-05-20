@@ -1,6 +1,6 @@
 from flask import Flask, render_template, Response, request
 from flask_cors import CORS
-from scrapeLiveInfo import ZeepNamba
+from scrapeLiveInfo import ZeppNamba
 import sys
 
 
@@ -27,7 +27,7 @@ def getZeppNamba():
         target_date = ""
         pass
     finally:
-        zn = ZeepNamba()
+        zn = ZeppNamba()
         json_data = zn.getLiveInfoJson(target_date)
         response = Response(json_data, content_type='application/json')
         return response
@@ -35,6 +35,7 @@ def getZeppNamba():
 if __name__ == '__main__':
     portNo = 5000
 
+    # 開発環境の時は引数でポートを5001にする
     args = sys.argv
     if len(args) > 1:
         portNo = int(args[1])
