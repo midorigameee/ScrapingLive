@@ -7,7 +7,9 @@ export function ResultViewer({ count, targetDate }) {
   let [resResult, setResResult] = useState(false);
   let [loading, setLoading] = useState(true);
 
-  const apiUrl = "http://localhost:5001/api/osaka/zepp-namba";
+  // const apiUrl = "http://localhost:5001/api/osaka/zepp-namba";
+  const apiUrl =
+    "https://scrapinglive-flask-api.onrender.com/api/osaka/zepp-namba";
 
   useEffect(() => {
     info.result ? setResResult(true) : setResResult(false);

@@ -1,7 +1,5 @@
 export const getLiveSchedule = (url) => {
   return new Promise((resolve, reject) => {
-    console.log("");
-
     // fetchでデータを取得 → resに格納してjsonにする → jsonにした値をdataに格納してresolveに詰めて返す（成功したよ、って意味で返す）
     fetch(url, {
       method: "GET",
