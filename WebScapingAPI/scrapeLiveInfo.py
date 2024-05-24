@@ -79,9 +79,9 @@ class ZeppNamba:
                     self.result = True
                     return performer, title
 
-                print("FIND RESULT : NOT FOUND")
-                print("===== ===== =====")
-                return "", ""
+            print("FIND RESULT : NOT FOUND")
+            print("===== ===== =====")
+            return "", ""
                 
         except Exception as e:
             print("エラー : ",e)
