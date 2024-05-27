@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { getLiveSchedule } from "../utils/getLiveSchedule";
 
-export function ResultViewer({ count, targetDate }) {
+export function ResultViewer({ count, targetDate, targetArea }) {
   let [info, setInfo] = useState({});
   let [visible, setVisible] = useState(false);
   let [resResult, setResResult] = useState(false);
   let [loading, setLoading] = useState(true);
 
-  // const apiUrl = "http://localhost:5001/api/osaka/zepp-namba";
-  const apiUrl =
-    "https://scrapinglive-flask-api.onrender.com/api/osaka/zepp-namba";
+  // const apiUrl = "http://localhost:5001/api/";
+  const apiUrl = "https://scrapinglive-flask-api.onrender.com/api/";
 
   useEffect(() => {
     info.result ? setResResult(true) : setResResult(false);
@@ -20,7 +19,7 @@ export function ResultViewer({ count, targetDate }) {
      */
   useEffect(() => {
     const fetchLiveInfo = async (year = "", month = "", day = "") => {
-      const apiUrlWithParam = `${apiUrl}?year=${year}&month=${month}&day=${day}`;
+      const apiUrlWithParam = `${apiUrl}${targetArea}?year=${year}&month=${month}&day=${day}`;
       console.log(`apiUrlWithParam: ${apiUrlWithParam}`);
       let res = await getLiveSchedule(apiUrlWithParam);
 
