@@ -1,0 +1,7 @@
+# Gitのブランチを表示させる設定
+source ~/git-prompt.sh
+PS1='[\u:\w]$(__git_ps1 " (%s)")\n\$ '
+
+# Pythonの仮想環境を立ち上げた状態でbash起動するための設定
+cd /workspaces/ScrapingLive
+source ./python12_venv/bin/activate

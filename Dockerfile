@@ -4,6 +4,7 @@ FROM ubuntu:24.04
 RUN apt-get update
 
 RUN apt-get install -y \
+    curl \
     vim \
     git \
     language-pack-ja-base language-pack-ja

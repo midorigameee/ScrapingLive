@@ -1,4 +1,8 @@
 #!/bin/sh
 
-# bash起動時に自動でPythonの仮想環境を立ち上げる設定を追加
-echo "cd /workspaces/ScrapingLive; source ./python12_venv/bin/activate" > ~/.bash_aliases
+touch ~/.bash_aliases
+cat /workspaces/ScrapingLive/.devcontainer/bash_aliases > ~/.bash_aliases
+
+# Gitのブランチを表示させる設定
+curl -o git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+mv git-prompt.sh ~
